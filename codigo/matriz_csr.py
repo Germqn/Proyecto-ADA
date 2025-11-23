@@ -37,3 +37,8 @@ class MatrizCSR(SparseMatrix):
     def transpuesta(self) -> 'SparseMatrix':
         # TODO: Implementar transpuesta.
         return MatrizCSR(self.m, self.n)
+
+    @classmethod
+    def crear_desde_matriz(cls, matriz_completa: List[List[int]]) -> 'SparseMatrix':
+        # TODO: Implementar la creación desde una matriz completa (Punto 1c)
+        return cls(len(matriz_completa), len(matriz_completa[0]))

@@ -38,3 +38,11 @@ class MatrizCOO(SparseMatrix):
     def transpuesta(self) -> 'SparseMatrix':
         # TODO: Implementar transpuesta.
         return MatrizCOO(self.m, self.n)
+
+    @classmethod
+    def crear_desde_matriz(cls, matriz_completa: List[List[int]]) -> 'SparseMatrix':
+        # TODO: Implementar la creación desde una matriz completa (Punto 1a)
+        # 1. Leer dimensiones (n, m)
+        # 2. Crear instancia
+        # 3. Recorrer matriz_completa y usar modificar_posicion para los no ceros.
+        return cls(len(matriz_completa), len(matriz_completa[0]))

@@ -54,6 +54,15 @@ class SparseMatrix(ABC):
         Retorna una NUEVA matriz que es la transpuesta de self.
         """
         pass
+
+    @classmethod
+    @abstractmethod
+    def crear_desde_matriz(cls, matriz_completa: List[List[int]]) -> 'SparseMatrix':
+        """
+        Punto 1 del Proyecto: Función para generar representación.
+        Recibe una matriz completa (lista de listas) y retorna la instancia de la matriz dispersa.
+        """
+        pass
     
     def __repr__(self):
         return f"<{self.__class__.__name__} ({self.n}x{self.m})>"

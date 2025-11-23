@@ -4,7 +4,7 @@ from sparse_matrix import SparseMatrix
 class MatrizCSC(SparseMatrix):
     """
     Implementación del Formato Comprimido por Columna (CSC).
-    Responsable: Integrante 3
+    Responsable: Integrante 3 - German Mejia
     """
     
     def __init__(self, n_filas: int, m_columnas: int):
@@ -37,3 +37,8 @@ class MatrizCSC(SparseMatrix):
     def transpuesta(self) -> 'SparseMatrix':
         # TODO: Implementar transpuesta.
         return MatrizCSC(self.m, self.n)
+
+    @classmethod
+    def crear_desde_matriz(cls, matriz_completa: List[List[int]]) -> 'SparseMatrix':
+        # TODO: Implementar la creación desde una matriz completa (Punto 1b)
+        return cls(len(matriz_completa), len(matriz_completa[0]))

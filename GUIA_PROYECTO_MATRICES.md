@@ -13,7 +13,7 @@ Para cumplir con los requisitos de "mejor manera" (código limpio, mantenible y 
 Deben crear una **Clase Base (Interfaz)** que defina las operaciones, y 3 subclases que implementen la lógica específica.
 
 *   **`SparseMatrix` (Clase Abstracta / Interfaz)**
-    *   Define los métodos abstractos: `obtener_elemento`, `obtener_fila`, `modificar_posicion`, `sumar`, `transpuesta`, etc.
+    *   Define los métodos abstractos: `obtener_elemento`, `obtener_fila`, `modificar_posicion`, `sumar`, `transpuesta`, y **`crear_desde_matriz`** (Punto 1).
     *   Esto asegura que los 3 integrantes programen con los mismos nombres de funciones.
 
 *   **`MatrizCOO` (Hereda de SparseMatrix)**
