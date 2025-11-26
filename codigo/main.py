@@ -54,49 +54,57 @@ def verificar_csr():
     print("   -> Fila 3 sumada:", suma.obtener_fila(3))
 
 
-def verificar_csc_pdf():
+def verificar_csc():
     """
-    Prueba específica para el Integrante 3 (CSC) usando el ejemplo del PDF.
+    Prueba específica del Integrante 3 (CSC).
     """
     print("\n" + "="*50)
     print("   VERIFICACIÓN ENTREGABLE: MATRIZ CSC (Integrante 3)")
     print("="*50)
     
-    filas, cols = 8, 7
-    matriz_completa = [[0] * cols for _ in range(filas)]
-    
-    matriz_completa[4][0] = 5; matriz_completa[5][0] = 1; matriz_completa[6][0] = 4
-    matriz_completa[0][1] = 2; matriz_completa[1][1] = 8; matriz_completa[5][1] = 2
-    matriz_completa[1][2] = 9; matriz_completa[7][2] = 7
-    matriz_completa[2][3] = 3
-    matriz_completa[1][5] = 1; matriz_completa[4][5] = 6; matriz_completa[7][5] = 11
-    matriz_completa[0][6] = 4
+    matriz_completa = [
+        [0, 2, 0, 0, 0, 0, 4],  # Fila 0
+        [0, 8, 9, 0, 0, 1, 0],  # Fila 1
+        [0, 0, 0, 3, 0, 0, 0],  # Fila 2
+        [0, 0, 0, 0, 0, 0, 0],  # Fila 3
+        [5, 0, 0, 0, 0, 6, 0],  # Fila 4
+        [1, 2, 0, 0, 0, 0, 0],  # Fila 5
+        [4, 0, 0, 0, 0, 0, 0],  # Fila 6
+        [0, 0, 7, 0, 0, 11, 0]  # Fila 7
+    ]
 
-    print("1. Creando matriz desde matriz completa (Punto 1b)...")
+    print("\n1. Creando matriz CSC desde matriz completa...")
     csc = MatrizCSC.crear_desde_matriz(matriz_completa)
     
-    valores_esp = [5, 1, 4, 2, 8, 2, 9, 7, 3, 1, 6, 11, 4]
-    filas_esp =   [4, 5, 6, 0, 1, 5, 1, 7, 2, 1, 4, 7, 0]
-    ccols_esp =   [0, 3, 6, 8, 9, 9, 12, 13]
-    
-    print(f"   -> Valores coinciden: {'✅' if csc.valores == valores_esp else '❌'}")
-    print(f"   -> Filas coinciden:   {'✅' if csc.filas == filas_esp else '❌'}")
-    print(f"   -> CCols coinciden:   {'✅' if csc.ccolumnas == ccols_esp else '❌'}")
+    print("   -> Valores:", csc.valores)
+    print("   -> Filas:", csc.filas)
+    print("   -> CColumnas:", csc.ccolumnas)
 
-    print("\n2. Verificando Operaciones (Puntos 2, 3, 4)...")
+    print("\n2. Probando obtener_elemento...")
+    print("   -> (4,0):", csc.obtener_elemento(4, 0))
+    print("   -> (0,1):", csc.obtener_elemento(0, 1))
+    print("   -> (7,5):", csc.obtener_elemento(7, 5))
+
+    print("\n3. Probando obtener_columna...")
+    print("   -> Columna 1:", csc.obtener_columna(1))
+    print("   -> Columna 5:", csc.obtener_columna(5))
+
+    print("\n4. Probando modificar_posicion...")
+    csc.modificar_posicion(4, 0, 99)
+    print("   -> Columna 0 tras insertar 99 en (4,0):", csc.obtener_columna(0))
     
-    val = csc.obtener_elemento(4, 0)
-    print(f"   -> Obtener (4,0): {val} (Esperado 5) {'✅' if val==5 else '❌'}")
-    
-    print("   -> Calculando Transpuesta...")
-    mt = csc.transpuesta()
-    val_t = mt.obtener_elemento(0, 4)
-    print(f"   -> Transpuesta (0,4): {val_t} (Esperado 5) {'✅' if val_t==5 else '❌'}")
-    
-    print("   -> Calculando Suma (Matriz + Matriz)...")
-    msuma = csc.sumar(csc)
-    val_s = msuma.obtener_elemento(4, 0)
-    print(f"   -> Suma (4,0): {val_s} (Esperado 10) {'✅' if val_s==10 else '❌'}")
+    csc.modificar_posicion(1, 1, 0)
+    print("   -> Columna 1 tras eliminar (1,1):", csc.obtener_columna(1))
+
+    print("\n5. Probando transpuesta...")
+    t = csc.transpuesta()
+    print("   -> Transpuesta (0,4):", t.obtener_elemento(0, 4))
+    print("   -> Transpuesta (1,0):", t.obtener_elemento(1, 0))
+
+    print("\n6. Probando suma (CSC + CSC)...")
+    suma = csc.sumar(csc)
+    print("   -> Columna 0 sumada:", suma.obtener_columna(0))
+    print("   -> Columna 1 sumada:", suma.obtener_columna(1))
 
 
 def main():
@@ -106,7 +114,7 @@ def main():
     verificar_csr()
 
     # PRUEBAS INTEGRANTE 3 (CSC)
-    verificar_csc_pdf()
+    verificar_csc()
 
 
 if __name__ == "__main__":

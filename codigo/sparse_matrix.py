@@ -4,7 +4,6 @@ from typing import List, Tuple, Union
 class SparseMatrix(ABC):
     """
     Clase abstracta que define la interfaz común para todas las representaciones de matrices dispersas.
-    Todos los integrantes deben respetar estos nombres de métodos.
     """
     
     def __init__(self, n_filas: int, m_columnas: int):
