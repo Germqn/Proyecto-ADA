@@ -2,10 +2,6 @@ from typing import List
 from sparse_matrix import SparseMatrix
 
 class MatrizCSC(SparseMatrix):
-    """
-    Implementación del Formato Comprimido por Columna (CSC).
-    Responsable: Integrante 3 - German Mejia
-    """
     
     def __init__(self, n_filas: int, m_columnas: int):
         super().__init__(n_filas, m_columnas)
@@ -15,7 +11,6 @@ class MatrizCSC(SparseMatrix):
         self.ccolumnas: List[int] = [0] * (m_columnas + 1)
 
     def obtener_elemento(self, i: int, j: int) -> int:
-        # TODO: Usar ccolumnas[j] y ccolumnas[j+1] para delimitar la búsqueda en self.filas
         if len(self.valores) == 0:
             return 0
         
@@ -25,7 +20,6 @@ class MatrizCSC(SparseMatrix):
         return 0
 
     def obtener_fila(self, i: int) -> List[int]:
-        # TODO: Iterar sobre toda la estructura para encontrar elementos de la fila i.
         if len(self.valores) == 0:
             return [0] * self.m
         #Crear una fila llena de ceros
@@ -42,7 +36,6 @@ class MatrizCSC(SparseMatrix):
         return fila_resultado
 
     def obtener_columna(self, j: int) -> List[int]:
-        # TODO: Reconstruir la columna usando el rango definido por ccolumnas.
         if len(self.valores) == 0:
             return [0] * self.n
         
@@ -53,7 +46,6 @@ class MatrizCSC(SparseMatrix):
         return columna_resultado
 
     def modificar_posicion(self, i: int, j: int, elemento: int) -> None:
-        # TODO: Insertar valor y actualizar ccolumnas.
         # 1. Buscar si ya existe el valor en esa posición
         rango_inicio = self.ccolumnas[j]
         rango_fin = self.ccolumnas[j+1]
@@ -64,7 +56,6 @@ class MatrizCSC(SparseMatrix):
                 if elemento != 0:
                     self.valores[k] = elemento
                 else:
-                    # Caso 2: El nuevo elemento es 0, deberíamos eliminarlo (hacer el proceso inverso)
                     self.valores.pop(k)
                     self.filas.pop(k)
                     # Restamos 1 a los punteros siguientes porque quitamos un elemento

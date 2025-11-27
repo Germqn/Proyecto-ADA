@@ -107,9 +107,3 @@ Este formato es simétrico al CSR pero por columnas. Es crucial para operaciones
 5.  **Conclusiones:** ¿Cuándo usar cuál? (CSR para acceso por filas, CSC para columnas, COO para construcción inicial).
 
 ---
-
-## 5. Siguientes Pasos
-
-Para proceder con el código, necesito saber:
-1.  **¿Qué lenguaje de programación prefieren?** (Python es recomendado por facilidad, C++ por rendimiento y tipado estricto).
-2.  ¿Desean que genere la **plantilla de código** (esqueleto de las clases) ahora mismo?

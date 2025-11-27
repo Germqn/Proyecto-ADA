@@ -2,10 +2,6 @@ from typing import List
 from sparse_matrix import SparseMatrix
 
 class MatrizCSR(SparseMatrix):
-    """
-    Implementación del Formato Comprimido por Fila (CSR).
-    Responsable: Integrante 2
-    """
 
     def __init__(self, n_filas: int, m_columnas: int):
         super().__init__(n_filas, m_columnas)
